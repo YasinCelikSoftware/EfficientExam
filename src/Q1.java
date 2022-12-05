@@ -1,52 +1,54 @@
 public class Q1 {
-    public static void main(String[] args) {
-        System.out.println(countPalindrom(349, reverseNumber(349)));
+    public static void main(String[] args)
+    {
+        run();
     }
 
-    public static int countPalindrom(int a, int b){
-        int total = a + b;
+    public static int countPalindrom(int a)
+    {
+        long total = a + reverseNumber(a);
         int count = 1;
-        if(!isPalindrome(total)) {
+
+        while(!(total == reverseNumber(total)))
+        {
+            total += reverseNumber(total);
             count++;
-            countPalindrom(total, reverseNumber(total));
         }
         return count;
     }
 
-    public static int reverseNumber(int number){
-        int reverse = 0;
-        int numberHolder;
-        for(int i = countDigits(number); i > 0; i--){
+    public static long reverseNumber(long number)
+    {
+        long reverse = 0;
+        long numberHolder;
+        while(number > 0)
+        {
             numberHolder = number % 10;
-            reverse += numberHolder * pow(10,countDigits(number)-1);
+            reverse = reverse * 10 + numberHolder;
             number /= 10;
         }
 
         return reverse;
     }
 
-    public static int countDigits(int a) {
-
-        int count = 0;
-
-        for (int i = a; i > 0; i /= 10)
-            count++;
-
-        return count;
-
+    public static void display(int count, int number)
+    {
+        System.out.printf("Longest chain is %d and this chain formed by the number %d", count, number);
     }
 
-    public static int pow(int a, int b) {
-        int result = 1;
-
-        for (int x = 0; x < b; x++)
-            result *= a;
-
-        return result;
-
-    }
-
-    public static boolean isPalindrome(int a){
-        return a == reverseNumber(a);
+    public static void run()
+    {
+        int maxChain = 0;
+        int number = 0;
+        for(int i = 10; i < 101; i++)
+        {
+            int chain = countPalindrom(i);
+            if(maxChain < chain)
+            {
+                maxChain = chain;
+                number = i;
+            }
+        }
+        display(maxChain,number);
     }
 }
