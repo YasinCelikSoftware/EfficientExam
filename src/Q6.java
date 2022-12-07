@@ -5,16 +5,18 @@ public class Q6 {
 
     }
 
-    public static int countDays(int firstDay, int firstMonth, int firstYear, int lastDay, int lastMonth, int lastYear) {
+    public static int countDays(int firstDay, int firstMonth, int firstYear, int lastDay, int lastMonth, int lastYear)
+    {
         int totalDays = 0;
-        int i, j;
+
         if (isLastAndFirstDateValid(firstDay, firstMonth, firstYear, lastDay, lastMonth, lastYear))
             return -1;
 
 
         monthLoop:
-        for (i = firstMonth; i <= 12; i++) {
-            for (j = firstDay + 1; j <= getDays(i, firstYear); j++) {
+        for (int i = firstMonth; i <= 12; i++)
+        {
+            for (int j = firstDay + 1; j <= getDays(i, firstYear); j++) {
                 totalDays++;
                 if (i == lastMonth && j == lastDay)
                     break monthLoop;
@@ -38,7 +40,7 @@ public class Q6 {
     {
         int count = 0;
 
-        for (int i = firstYear; i < lastYear; i++)
+        for (int i = firstYear + 1; i <= lastYear; i++)
             if (isLeapYear(i))
                 count++;
 
@@ -80,7 +82,8 @@ public class Q6 {
         if (lastYear > firstYear)
             return true;
 
-        if (lastYear == firstYear) {
+        if (lastYear == firstYear)
+        {
             if (lastMonth > firstMonth)
                 return true;
             else if (lastMonth == firstMonth) {
@@ -104,18 +107,25 @@ public class Q6 {
         return days / 11;
     }
 
-    public static void run(){
+    public static void run()
+    {
         java.util.Scanner kb = new java.util.Scanner(System.in);
+
         System.out.println("Please enter the first date's day : ");
         int firstDay = kb.nextInt();
+
         System.out.println("Please enter the first date's month : ");
         int firstMonth = kb.nextInt();
+
         System.out.println("Please enter the first date's year : ");
         int firstYear = kb.nextInt();
+
         System.out.println("Please enter the last date's day : ");
         int lastDay = kb.nextInt();
+
         System.out.println("Please enter the last date's month : ");
         int lastMonth = kb.nextInt();
+
         System.out.println("Please enter the last date's year : ");
         int lastYear = kb.nextInt();
 
@@ -126,7 +136,8 @@ public class Q6 {
 
     }
 
-    public static void display(int numberOfDays){
+    public static void display(int numberOfDays)
+    {
         if(numberOfDays == -1)
             System.out.println("\nYour dates are invalid. Please check and try again.");
         else
