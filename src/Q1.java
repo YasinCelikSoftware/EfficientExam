@@ -4,7 +4,7 @@ public class Q1 {
         run();
     }
 
-    public static int countPalindrome(int a)
+    public static int countPalindrome (int a)
     {
         long total = a + reverseNumber(a);
         int count = 1;
