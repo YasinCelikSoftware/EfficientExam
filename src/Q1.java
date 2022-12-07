@@ -4,7 +4,7 @@ public class Q1 {
         run();
     }
 
-    public static int countPalindrom(int a)
+    public static int countPalindrome(int a)
     {
         long total = a + reverseNumber(a);
         int count = 1;
@@ -42,7 +42,7 @@ public class Q1 {
         int number = 0;
         for(int i = 10; i < 101; i++)
         {
-            int chain = countPalindrom(i);
+            int chain = countPalindrome(i);
             if(maxChain < chain)
             {
                 maxChain = chain;
